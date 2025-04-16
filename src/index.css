@@ -1,0 +1,311 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --swiper-theme-color: #14b8a6;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Modern Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.2);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Base Styles */
+.app-container {
+  @apply max-w-md mx-auto min-h-screen bg-white dark:bg-secondary-900 shadow-app transition-colors duration-300;
+}
+
+.page-container {
+  @apply px-4 py-6 pb-24 overflow-y-auto h-[calc(100vh-4rem)] scroll-smooth;
+}
+
+.content-scroll {
+  @apply h-[calc(100vh-4rem)] overflow-y-auto scroll-smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chat-scroll {
+  @apply h-[calc(100vh-8rem)] overflow-y-auto scroll-smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-primary-500 text-white font-medium py-3 px-6 rounded-xl shadow-button hover:bg-primary-600 active:bg-primary-700 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+}
+
+.btn-secondary {
+  @apply bg-white dark:bg-secondary-800 text-secondary-800 dark:text-secondary-100 font-medium py-3 px-6 rounded-xl border border-secondary-200 dark:border-secondary-700 hover:bg-secondary-50 dark:hover:bg-secondary-700 active:bg-secondary-100 dark:active:bg-secondary-600 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0;
+}
+
+.btn-glass {
+  @apply backdrop-blur-glass bg-white/70 dark:bg-secondary-800/70 text-secondary-800 dark:text-white font-medium py-3 px-6 rounded-xl border border-white/20 dark:border-secondary-700/30 shadow-glass hover:bg-white/80 dark:hover:bg-secondary-700/80 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+}
+
+.btn-neon {
+  @apply bg-primary-500/90 text-white font-medium py-3 px-6 rounded-xl shadow-neon dark:shadow-neon-dark hover:bg-primary-500 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 border border-primary-400/50;
+}
+
+/* Cards */
+.card {
+  @apply bg-white dark:bg-secondary-800 rounded-2xl shadow-card overflow-hidden border border-transparent dark:border-secondary-700/50 transition-colors duration-300 hover:shadow-lg;
+}
+
+.card-glass {
+  @apply backdrop-blur-glass bg-white/70 dark:bg-secondary-800/70 rounded-2xl shadow-glass overflow-hidden border border-white/20 dark:border-secondary-700/30 transition-all duration-300 hover:shadow-lg;
+}
+
+.card-neon {
+  @apply bg-white dark:bg-secondary-800 rounded-2xl overflow-hidden border border-primary-300 dark:border-primary-700 transition-all duration-300 hover:shadow-neon dark:hover:shadow-neon-dark;
+}
+
+/* Navigation */
+.bottom-nav {
+  @apply fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-secondary-800/90 backdrop-blur-glass shadow-lg dark:shadow-secondary-900/50 rounded-t-3xl py-2 z-50 border-t border-secondary-100/50 dark:border-secondary-700/50 transition-colors duration-300;
+}
+
+.bottom-nav-item {
+  @apply flex flex-col items-center justify-center py-2 px-1;
+}
+
+.bottom-nav-item.active {
+  @apply text-primary-500;
+}
+
+.bottom-nav-item.inactive {
+  @apply text-secondary-400 dark:text-secondary-500 hover:text-secondary-600 dark:hover:text-secondary-300;
+}
+
+/* Inputs */
+.input-field {
+  @apply w-full bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-transparent transition-all duration-200 text-secondary-900 dark:text-white placeholder:text-secondary-400 dark:placeholder:text-secondary-500;
+}
+
+.input-glass {
+  @apply w-full backdrop-blur-glass bg-white/70 dark:bg-secondary-800/70 border border-white/20 dark:border-secondary-700/30 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-transparent transition-all duration-200 text-secondary-900 dark:text-white placeholder:text-secondary-400 dark:placeholder:text-secondary-500 shadow-glass;
+}
+
+/* Effects */
+.shimmer {
+  @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-shimmer before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent;
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+}
+
+.bg-grid {
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, rgba(20, 184, 166, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(20, 184, 166, 0.05) 1px, transparent 1px);
+}
+
+.bg-dots {
+  background-image: radial-gradient(rgba(20, 184, 166, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Modern Cards */
+.card-modern {
+  @apply relative overflow-hidden rounded-2xl bg-white/90 dark:bg-secondary-800/90 backdrop-blur-glass border border-white/30 dark:border-secondary-700/30 shadow-glass;
+}
+
+.card-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, theme('colors.primary.400'), theme('colors.primary.600'));
+  z-index: 1;
+}
+
+.card-modern-alt {
+  @apply relative overflow-hidden rounded-2xl bg-white/90 dark:bg-secondary-800/90 backdrop-blur-glass border border-white/30 dark:border-secondary-700/30 shadow-glass;
+}
+
+.card-modern-alt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(180deg, theme('colors.primary.400'), theme('colors.primary.600'));
+  z-index: 1;
+}
+
+/* Modern Buttons */
+.btn-modern {
+  @apply relative overflow-hidden bg-primary-500 text-white font-medium py-3 px-6 rounded-xl shadow-button transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-modern:hover::before {
+  left: 100%;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(20, 184, 166, 0.5), 0 0 20px rgba(20, 184, 166, 0.3);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px rgba(20, 184, 166, 0.8), 0 0 30px rgba(20, 184, 166, 0.5);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 3s ease infinite;
+}
+
+/* Hover Effects */
+.hover-lift {
+  @apply transition-all duration-300;
+}
+
+.hover-lift:hover {
+  @apply -translate-y-1 shadow-lg;
+}
+
+.hover-scale {
+  @apply transition-all duration-300;
+}
+
+.hover-scale:hover {
+  @apply scale-105;
+}
+
+/* Glass Effects */
+.glass-morphism {
+  @apply backdrop-blur-glass bg-white/40 dark:bg-secondary-800/40 border border-white/30 dark:border-secondary-700/30 shadow-glass;
+}
+
+/* Text Effects */
+.text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-600 dark:from-primary-400 dark:to-primary-500;
+}
+
+/* Dark Mode Improvements */
+.dark .card {
+  @apply bg-secondary-800/95 border-secondary-700/50;
+}
+
+.dark .btn-glass {
+  @apply text-white bg-secondary-800/70 hover:bg-secondary-700/80;
+}
+
+.dark .input-field {
+  @apply bg-secondary-800/95 border-secondary-700/50 text-white placeholder:text-secondary-500;
+}
+
+.dark .bottom-nav {
+  @apply bg-secondary-800/95 border-secondary-700/50;
+}
+
+/* Improved Text Contrast */
+.dark .text-secondary-600 {
+  @apply text-secondary-300;
+}
+
+.dark .text-secondary-700 {
+  @apply text-secondary-200;
+}
+
+.dark .text-secondary-800 {
+  @apply text-secondary-100;
+}
+
+/* Glass Effects in Dark Mode */
+.dark .glass-morphism {
+  @apply bg-secondary-800/40 border-secondary-700/30;
+}
+
+.dark .backdrop-blur-glass {
+  @apply bg-secondary-800/40;
+}
+
+/* Card Improvements */
+.card, .card-glass, .card-modern {
+  @apply hover:shadow-lg transition-all duration-300;
+}
+
+.dark .card, .dark .card-glass, .dark .card-modern {
+  @apply hover:shadow-secondary-900/30;
+}
+
+/* Button States */
+.btn-primary, .btn-secondary, .btn-glass, .btn-modern {
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+/* Focus States */
+.input-field:focus, .input-glass:focus {
+  @apply ring-2 ring-primary-500/50;
+}
+
+/* Interactive Elements */
+button, a {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:ring-offset-2 dark:focus:ring-offset-secondary-900;
+}
+
+/* Loading States */
+.shimmer {
+  @apply dark:before:via-secondary-700/20;
+}
